@@ -1,7 +1,7 @@
 # TBB static linking tutorial
 
 TBB does not provide statically linked libraries. Here is the
-[link to their rationales](https://www.threadingbuildingblocks.org/faq/11#sthash.t3BrizFQ.dpuf).
+[link to the rationales](https://www.threadingbuildingblocks.org/faq/11?page=1).
 
 It is still unofficially supported to build statically linked binaries.
 The trick is to build TBB manually with `make extra_inc=big_iron.inc`.
