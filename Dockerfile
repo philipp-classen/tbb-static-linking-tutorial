@@ -10,9 +10,9 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 # Install TBB and build it with "big_iron"
-RUN wget https://github.com/01org/tbb/archive/2017_U6.tar.gz && \
-    tar xzfv 2017_U6.tar.gz && \
-    cd tbb-2017_U6 && \
+RUN wget https://github.com/01org/tbb/archive/2017_U7.tar.gz && \
+    tar xzfv 2017_U7.tar.gz && \
+    cd tbb-2017_U7 && \
     make extra_inc=big_iron.inc
 
 # Now build the example application.
@@ -26,7 +26,7 @@ RUN wget https://github.com/01org/tbb/archive/2017_U6.tar.gz && \
 #
 COPY example-tbb-app/example.cpp /example-tbb-app/example.cpp
 RUN cd /example-tbb-app && \
-    g++ -std=c++14 -O3 -g -o statically-linked-binary example.cpp /tbb-2017_U6/build/linux*release/*.o -static -L /tbb-2017_U6/build/linux*release -ltbb -lpthread && \
+    g++ -std=c++14 -O3 -g -o statically-linked-binary example.cpp /tbb-2017_U7/build/linux*release/*.o -static -L /tbb-2017_U7/build/linux*release -ltbb -lpthread && \
     strip statically-linked-binary
 
 CMD ["cp", "/example-tbb-app/statically-linked-binary", "/output-dir/statically-linked-binary"]
